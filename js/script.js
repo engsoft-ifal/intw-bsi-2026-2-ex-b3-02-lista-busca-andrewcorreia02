@@ -15,3 +15,26 @@ const busca = document.querySelector("#busca");
 // TODO 2: chame render() ao carregar a página e a cada evento "input" na busca.
 
 // escreva seu código aqui
+
+function render(filtro = "") {
+  const filtrados = cursos.filter(curso =>
+    curso.nome.toLowerCase().includes(filtro.toLowerCase())
+  );
+
+  if (filtrados.length === 0) {
+    lista.innerHTML = "<li>Nada encontrado</li>";
+    return;
+  }
+
+  lista.innerHTML = filtrados.map(curso =>
+    `<li>${curso.nome}</li>`
+  ).join("");
+}
+
+// Mostra os cursos ao carregar
+render();
+
+// Filtra enquanto digita
+busca.addEventListener("input", () => {
+  render(busca.value);
+});
