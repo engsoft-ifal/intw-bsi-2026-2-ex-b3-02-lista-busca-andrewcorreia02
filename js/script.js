@@ -30,11 +30,7 @@ function render(filtro = "") {
     `<li>${curso.nome}</li>`
   ).join("");
 }
-
-// Mostra os cursos ao carregar
 render();
-
-// Filtra enquanto digita
 busca.addEventListener("input", () => {
   render(busca.value);
 });
